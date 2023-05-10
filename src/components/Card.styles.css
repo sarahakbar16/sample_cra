@@ -1,0 +1,12 @@
+.PokeCard {
+  padding: 10px;
+}
+
+.cardslist {
+  display: flex;
+  flex-direction: row;
+  align-content: space-around;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
