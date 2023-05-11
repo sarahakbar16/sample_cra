@@ -9,6 +9,7 @@ interface CardProps {
   name: string;
   imageUrl: string;
   type: string;
+  counter: number; 
 }
 
 function PokeCard(props: CardProps) {
@@ -27,6 +28,9 @@ function PokeCard(props: CardProps) {
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {props.type}
+          </Typography>
+          <Typography variant="body2" color="text.secondary">
+            {props.counter}
           </Typography>
         </CardContent>
       </CardActionArea>
