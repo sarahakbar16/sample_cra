@@ -1,9 +1,10 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import { CardActionArea } from "@mui/material";
 import Typography from "@mui/material/Typography";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import "./Card.styles.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
 
 interface CardProps {
   name: string;
@@ -16,10 +17,10 @@ function PokeCard(props: CardProps) {
   return (
     <Card sx={{ Width: 200, Height: 400 }}>
       <CardActionArea>
-        <CardMedia
-          component="img"
+        <LazyLoadImage
           height="140"
-          image={props.imageUrl}
+          src={props.imageUrl}
+          effect="blur"
           alt={"A pokemon"}
         />
         <CardContent>
