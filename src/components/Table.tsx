@@ -2,6 +2,8 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import { useState, useEffect } from "react";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 function Table() {
   const [rowData, setRowData] = useState();
@@ -10,7 +12,7 @@ function Table() {
     <span>
       {new Array(props.value).fill("").map((ignore) => (
         // eslint-disable-next-line jsx-a11y/alt-text
-        <img src={props.value} />
+        <LazyLoadImage height="140" alt={"A pokemon"} effect="blur" src={props.value} />
       ))}
     </span>
   );
