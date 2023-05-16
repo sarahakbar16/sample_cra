@@ -1,10 +1,11 @@
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 
 function Table() {
   const [rowData, setRowData] = useState();
+  const dataFetchedRef = useRef(false);
 
   const ImageCellRenderer = (props: { value: string | undefined }) => (
     <span>
@@ -32,13 +33,20 @@ function Table() {
 
   const rowHeight = 150;
 
-  useEffect(() => {
+  const fetchData = useCallback(() => {
+    console.log("FETCH");
     fetch(
       "https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json"
     )
       .then((result) => result.json())
       .then((rowData) => setRowData(rowData.pokemon));
   }, []);
+
+  useEffect(() => {
+    if (dataFetchedRef.current) return;
+    dataFetchedRef.current = true;
+    fetchData();
+  }, [fetchData]);
 
   return (
     <div className="Table" style={{ height: "100%" }}>
