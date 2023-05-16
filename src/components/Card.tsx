@@ -9,12 +9,12 @@ interface CardProps {
   name: string;
   imageUrl: string;
   type: string;
-  counter: number; 
+  counter: number;
 }
 
 function PokeCard(props: CardProps) {
   return (
-    <Card sx={{ Width: 200, Height: 400}}>
+    <Card sx={{ Width: 200, Height: 400 }}>
       <CardActionArea>
         <CardMedia
           component="img"

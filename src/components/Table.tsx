@@ -8,9 +8,9 @@ function Table() {
 
   const ImageCellRenderer = (props: { value: string | undefined }) => (
     <span>
-      {new Array(props.value).fill("").map((ignore) => (
+      {new Array(props.value).fill("").map((ignore, i) => (
         // eslint-disable-next-line jsx-a11y/alt-text
-        <img src={props.value} />
+        <img src={props.value} key={i}/>
       ))}
     </span>
   );

@@ -56,7 +56,7 @@ export default function CardView() {
             Table View
           </Button>
           <Button color="inherit" onClick={() => onClickSort()}>
-            Sort Data 
+            Sort Data
           </Button>
           <Button color="inherit" onClick={() => onClickCounter()}>
             Update Counter: {counter}
@@ -71,6 +71,7 @@ export default function CardView() {
             imageUrl={item.img}
             type={item.type}
             counter={counter}
+            key={i}
           />
         ))}
       </div>
