@@ -2,7 +2,7 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import PokeCard from "../components/Card";
 import "./CardView.styles.css";
 
@@ -21,8 +21,9 @@ export default function CardView() {
   const [counter, setCounter] = useState<number>(0);
   const [date, setDate] = useState(new Date());
   const [alphabetizeData, setAlphabetizeData] = useState<any[]>([]);
+  const dataFetchedRef = useRef(false);
 
-  useEffect(() => {
+  const fetchData = useCallback(() => {
     console.log("FETCH");
     fetch(
       "https://raw.githubusercontent.com/Biuni/PokemonGO-Pokedex/master/pokedex.json"
@@ -30,6 +31,12 @@ export default function CardView() {
       .then((result) => result.json())
       .then((rowData) => setCardData(rowData.pokemon));
   }, []);
+
+  useEffect(() => {
+    if (dataFetchedRef.current) return;
+    dataFetchedRef.current = true;
+    fetchData();
+  }, [fetchData]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
