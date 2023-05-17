@@ -78,6 +78,7 @@ export default function CardView() {
             imageUrl={item.img}
             type={item.type}
             counter={counter}
+            key={i}
           />
         ))}
       </div>
